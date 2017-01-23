@@ -56,8 +56,8 @@ class Collatz
 
   def run
     puts "Get c: #{@@c}"
-    @@c.displaySize
-    @@c.go
+    displaySize
+    go
   end
 
   def initialize
