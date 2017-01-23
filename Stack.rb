@@ -24,6 +24,6 @@ class Stack
   end
 
   def top
-    @array.top
+    @array.at(@array.size-1)
   end
 end
