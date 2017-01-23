@@ -65,9 +65,11 @@ class Collatz
   end
 
   def initialize
-    puts "initialize"
-    @stack = Stack.new
-    @stack.push(2,1)
+    if @stack.empty
+      puts "initialize"
+      @stack = Stack.new
+      @stack.push(2,1)
+    end
     @stCount=0
     @finished=0
     run
