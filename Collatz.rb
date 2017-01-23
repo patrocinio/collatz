@@ -54,21 +54,26 @@ class Collatz
     end
   end
 
+  def run
+    puts "Get c: #{@@c}"
+    @@c.displaySize
+    @@c.go
+  end
+
   def initialize
     puts "initialize"
     @stack = Stack.new
     @stack.push(2,1)
     @stCount=0
     @finished=0
+    run
   end
 end
 
 @@c = Collatz.new
 
 get '/' do
-  puts "Get c: #{@@c}"
-  @@c.displaySize
-  @@c.go
+#  run
 end
 
 
