@@ -22,4 +22,8 @@ class Stack
   def size
     @array.size.to_s
   end
+
+  def top
+    @array.top
+  end
 end

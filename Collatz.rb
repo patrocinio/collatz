@@ -32,7 +32,11 @@ class Collatz
   end
 
   def displaySize
-    puts "Array size: " + @stack.size.to_s + " finished: " + @finished.to_s
+    e = @stack.top 
+    a = e[0]
+    b = e[1]
+    puts "Array size: " + @stack.size.to_s + " finished: " + @finished.to_s + \
+      "top: #{a}n+#{b}"
   end
 
   def displayStatus
