@@ -46,12 +46,13 @@ class Collatz
   def go 
     count = 0
     displaySize
-    while !@stack.empty and count < 1000
+    while !@stack.empty and count < 10000
       displayStatus
       e = @stack.pop
       process e
       count = count+1
     end
+    puts "Done"
   end
 
   def run
