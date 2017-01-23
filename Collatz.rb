@@ -36,7 +36,7 @@ class Collatz
     a = e[0]
     b = e[1]
     puts "Array size: " + @stack.size.to_s + " finished: " + @finished.to_s + \
-      " top: #{a.magnitude}n+#{b.magnitude}"
+      " top: #{a.magnitudeX}n+#{b.magnitude}"
   end
 
   def displayStatus
