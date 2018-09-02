@@ -1,0 +1,1 @@
+docker run docker.io/patrocinio/robinhood-collatz
