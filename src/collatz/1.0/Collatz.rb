@@ -77,7 +77,7 @@ end
 @@c = Collatz.new
 
 get '/' do
-#  run
+  run
 end
 
 
