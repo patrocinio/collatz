@@ -1,10 +1,10 @@
 COMPONENT=$1
 VERSION=$2
 
-IMAGE=patrocinio/robinhood-$COMPONENT:$VERSION
+IMAGE=patrocinio/collatz-$COMPONENT:$VERSION
 
 echo Pushing component $COMPONENT as latest version
-LATEST=patrocinio/robinhood-$COMPONENT:latest
+LATEST=patrocinio/collatz-$COMPONENT:latest
 docker tag $IMAGE $LATEST
 docker push $LATEST
 
