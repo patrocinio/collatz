@@ -10,8 +10,8 @@ image:
 service:
   name: collatz
   type: NodePort
-  externalPort: 80
-  internalPort: 80
+  externalPort: 4567
+  internalPort: 4567
 ingress:
   enabled: false
   # Used to create Ingress record (should used with service.type: ClusterIP).

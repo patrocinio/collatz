@@ -1,4 +1,5 @@
 FROM ruby
+EXPOSE 4567
 
 ARG version
 ARG component
