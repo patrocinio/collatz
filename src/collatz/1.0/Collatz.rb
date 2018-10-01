@@ -29,7 +29,7 @@ class Collatz
           a = 3*a
           b = 3*b+1
         end # a.even
-      else
+      else 
         @stack.push(2*oa, oa+ob)
         @stack.push(2*oa, ob)
         break
@@ -39,6 +39,7 @@ class Collatz
 
   def displaySize
     e = @stack.top 
+    puts "Popup " + e
     a = e[0]
     b = e[1]
 

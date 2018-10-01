@@ -1,6 +1,10 @@
+var redisHelper = require('./redisHelper');
+var REDIS_URL = "redis://collatz-stack";
+
 class Stack
   
   def initialize
+    @client = redisHelper.connectToRedis(REDIS_URL);
     @array = []
   end
 

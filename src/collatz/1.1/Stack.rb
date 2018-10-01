@@ -1,29 +1,40 @@
+require "redis"
+
+REDIS_URL = "collatz-stack";
+KEY = "collatz"
+
 class Stack
   
   def initialize
+    puts "Welcome to Stack"
+    puts "==> Initializing redis..."
+    @redis = Redis.new(host: REDIS_URL);
     @array = []
   end
 
 	def push(a,b)
-    #		puts "Pushing #{a}n+#{b}"
-    #    @array.insert(0, [a,b])
-    @array << [a,b] 
+#    puts "Pushing #{a}n+#{b}"
+    @redis.rpush(KEY, [a,b].to_json) 
 	end
 	
 	def pop
-#		puts "Popping..."
-    @array.pop
-	end
+    v = @redis.rpop(KEY)
+    a = JSON.parse(v)
+    a
+  end
   
   def empty
-    !@array.any?
+    @redis.llen(KEY) == 0
   end
   
   def size
-    @array.size.to_s
+    @redis.llen(KEY)
   end
 
   def top
-    @array.at(@array.size-1)
+    v = @redis.lindex(KEY, -1)
+#    puts "Top: " + v
+    a = JSON.parse(v)
+    a
   end
 end

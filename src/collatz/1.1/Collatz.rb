@@ -39,6 +39,7 @@ class Collatz
 
   def displaySize
     e = @stack.top 
+
     a = e[0]
     b = e[1]
 
@@ -63,6 +64,7 @@ class Collatz
     while !@stack.empty and count < 1000000
       displayStatus
       e = @stack.pop
+
       process e
       count = count+1
     end
