@@ -59,14 +59,14 @@ class Collatz
   end
 
   def go 
-    count = 0
+#    count = 0
     displaySize
-    while !@stack.empty and count < 1000000
+    while !@stack.empty # and count < 1000000
       displayStatus
       e = @stack.pop
 
       process e
-      count = count+1
+#      count = count+1
     end
     puts "Done"
   end
