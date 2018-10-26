@@ -76,10 +76,22 @@ class Collatz
     go
   end
 
+  def kickOff
+    puts "Adding initial seed"
+    @stack.push(2,1)
+  end
+
+  def reset
+    @stack.delete
+    kickOff
+  end
+
   def initialize
     puts "initialize"
     @stack = Stack.new
-    @stack.push(2,1)
+    if (@stack.empty)
+      kickOff
+    end
     @stCount=0
     @finished=0
     puts "Spawing a thread..."
@@ -95,6 +107,10 @@ end
 
 get '/' do
   "I'm healthy"
+end
+
+get '/reset' do
+  @@c.reset
 end
 
 

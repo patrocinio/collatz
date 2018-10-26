@@ -9,7 +9,6 @@ class Stack
     puts "Welcome to Stack"
     puts "==> Initializing redis..."
     @redis = Redis.new(host: REDIS_URL);
-    @array = []
   end
 
 	def push(a,b)
@@ -36,5 +35,9 @@ class Stack
 #    puts "Top: " + v
     a = JSON.parse(v)
     a
+  end
+
+  def delete
+    @redis.del(KEY)
   end
 end
