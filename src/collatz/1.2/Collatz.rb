@@ -22,6 +22,7 @@ class Collatz
         
           if a < oa
             puts "==> Completed #{formatNumber(oa)}n+#{formatNumber(ob)} --> #{formatNumber(a)}n+#{formatNumber(b)}"
+            STDOUT.flush
             @finished = @finished + 1
             @stack.incCounter
             break
@@ -80,12 +81,6 @@ class Collatz
     @stack.push(2,1)
   end
 
-  def reset
-    @stack.delete
-    @stack.initCounter
-    kickOff
-  end
-
   def initialize
     puts "initialize"
     @stack = Stack.new
@@ -102,23 +97,15 @@ class Collatz
       puts "Finished so far: " + @finished.to_s
     end
     @stCount=0
-    puts "Spawing a thread..."
-    Thread.new { run }
+    run
   end
 end
 
 @@c = Collatz.new
 
-get '/size' do
-  @@c.displaySize
-end
-
 get '/' do
   "I'm healthy"
 end
 
-get '/reset' do
-  @@c.reset
-end
 
 
