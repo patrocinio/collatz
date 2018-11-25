@@ -8,16 +8,19 @@ image:
   tag: latest
   pullPolicy: Always
 service:
-  name: collatz
-  type: NodePort
+  name: collatz-mgr
+  type: ClusterIP
   externalPort: 4567
   internalPort: 4567
 ingress:
-  enabled: false
+  enabled: true
+  path: /collatz-mgr
+
   # Used to create Ingress record (should used with service.type: ClusterIP).
   hosts:
-    - collatz.collatz
-  annotations:
+    - 
+  annotations: 
+    ingress.kubernetes.io/rewrite-target: /
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   tls:
