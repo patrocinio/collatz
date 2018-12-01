@@ -32,8 +32,8 @@ class Collatz
           b = 3*b+1
         end # a.even
       else
-        @stack.push(2*oa, oa+ob)
         @stack.push(2*oa, ob)
+        @stack.push(2*oa, oa+ob)
         break
       end
     end
