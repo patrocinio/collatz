@@ -14,6 +14,8 @@ class Collatz
     a = e[0]
     b = e[1]
 
+    @finished = @stack.getCounter
+
     perc = @finished*100 / @stack.size.to_i
     "Array size: " + @stack.size.to_s + " finished: " + @finished.to_s + \
       " ( " + perc.to_s + "%) top: " + formatNumber(a)
@@ -40,7 +42,13 @@ class Collatz
     kickOff
   end
 
+  def initialize
+    puts "initialize"
+    @stack = Stack.new
+  end
+
 end
+
 
 @@c = Collatz.new
 
