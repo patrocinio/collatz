@@ -1,11 +1,11 @@
 NAME=$1
 VERSION=$2
 NAMESPACE=collatz
-TLS=--tls
-#TLS=
+#TLS=--tls
+TLS=
 
 echo Deleting release $NAME
-helm delete --purge $NAME $TLS
+helm delete $NAME $TLS
 
 echo Deploying $NAME version $VERSION
-helm install -n $NAME ../helm/$NAME/$VERSION $TLS
+helm install $NAME ../helm/$NAME/$VERSION $TLS

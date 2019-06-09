@@ -6,6 +6,7 @@
 #   imageRegistry: myRegistryName
 #   imagePullSecrets:
 #     - myRegistryKeySecretName
+
 image:
   ## Bitnami MongoDB registry
   ##
@@ -16,7 +17,7 @@ image:
   ## Bitnami MongoDB image tag
   ## ref: https://hub.docker.com/r/bitnami/mongodb/tags/
   ##
-  tag: 4.0.10-debian-9-r0
+  tag: 4.0.9
 
   ## Specify a imagePullPolicy
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -37,7 +38,7 @@ image:
 ## Enable authentication
 ## ref: https://docs.mongodb.com/manual/tutorial/enable-authentication/
 #
-usePassword: false
+usePassword: true
 # existingSecret: name-of-existing-secret
 
 ## MongoDB admin password
@@ -108,12 +109,13 @@ service:
   ##
   # loadBalancerIP:
 
+
 ## Setting up replication
 ## ref: https://github.com/bitnami/bitnami-docker-mongodb#setting-up-a-replication
 #
 replicaSet:
   ## Whether to create a MongoDB replica set for high availability or not
-  enabled: false
+  enabled: true
   useHostnames: true
 
   ## Name of the replica set
@@ -143,11 +145,6 @@ podAnnotations: {}
 # Additional pod labels to apply
 podLabels: {}
 
-## Use an alternate scheduler, e.g. "stork".
-## ref: https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
-##
-# schedulerName:
-
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 ##
@@ -155,9 +152,9 @@ resources: {}
 # limits:
 #   cpu: 500m
 #   memory: 512Mi
-requests:
-   cpu: 500m
-   memory: 1024Mi
+# requests:
+#   cpu: 100m
+#   memory: 256Mi
 
 ## Pod priority
 ## https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
@@ -184,7 +181,7 @@ updateStrategy:
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
 ##
 persistence:
-  enabled: false
+  enabled: true
   ## A manually managed Persistent Volume and Claim
   ## Requires persistence.enabled: true
   ## If defined, PVC must be created manually before volume will be bound
@@ -243,14 +240,14 @@ livenessProbe:
   initialDelaySeconds: 30
   periodSeconds: 10
   timeoutSeconds: 5
-  failureThreshold: 60
+  failureThreshold: 6
   successThreshold: 1
 readinessProbe:
   enabled: true
   initialDelaySeconds: 5
   periodSeconds: 10
   timeoutSeconds: 5
-  failureThreshold: 60
+  failureThreshold: 6
   successThreshold: 1
 
 # Define custom config map with init scripts
@@ -279,8 +276,8 @@ configmap:
 #      enabled: true
 #      pathPrefix: /opt/bitnami/mongodb/tmp
 #  # replica set options
-#  #replication:
-#  #  replSetName: replicaset
+#  replication:
+#    replSetName: replicaset
 #  # process management options
 #  processManagement:
 #     fork: false
@@ -291,12 +288,12 @@ configmap:
 #  # security options
 #  security:
 #    authorization: enabled
-#    #keyFile: /opt/bitnami/mongodb/conf/keyfile
+#    keyFile: /opt/bitnami/mongodb/conf/keyfile
 
 ## Prometheus Exporter / Metrics
 ##
 metrics:
-  enabled: false
+  enabled: true
 
   image:
     registry: docker.io
@@ -326,14 +323,14 @@ metrics:
     initialDelaySeconds: 15
     periodSeconds: 5
     timeoutSeconds: 5
-    failureThreshold: 30
+    failureThreshold: 3
     successThreshold: 1
   readinessProbe:
     enabled: true
     initialDelaySeconds: 5
     periodSeconds: 5
     timeoutSeconds: 1
-    failureThreshold: 30
+    failureThreshold: 3
     successThreshold: 1
 
   ## Metrics exporter pod Annotation

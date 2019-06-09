@@ -1,1 +1,0 @@
-docker run -p 4567:4567 docker.io/patrocinio/collatz-collatz
